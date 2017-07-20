@@ -16,6 +16,12 @@ public class HomeController {
         this.repository = repository;
     }
 
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String index() {
+        Message msg = new Message("你好，世界！");
+        return this.repository.jsonString(msg);
+    }
+
     @RequestMapping(value = "/json", method = {RequestMethod.GET, RequestMethod.POST})
     public String json() {
         Message msg = new Message("Hello, World!");
